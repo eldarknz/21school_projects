@@ -16,6 +16,7 @@ int		main(int ac, char **av)
 {
 	t_figure	*head;
 	int			fd;
+	int			board_size;
 	//t_figure	*tmp;
 	//int			i;
 
@@ -26,7 +27,10 @@ int		main(int ac, char **av)
 	head = get_figure(fd);
 	close(fd);
 	check_figures(head);
-	printf("board_size ==> %d\n", get_board_size(head));
+	board_size = get_board_size(head)
+	printf("board_size ==> %d\n", board_size);
+	
+	set_change(head, board_size);
 	//tmp = head;
 	//i = 0;
 	/*while (tmp)

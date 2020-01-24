@@ -26,8 +26,10 @@ typedef struct	s_figure
 }				t_figure;
 
 t_figure		*get_figure(int fd);
-void			ft_error(int er);
+void			error_handler(int er);
 void			check_figures(t_figure *head);
+void			set_change(t_figure *head, int size);
+void			shift_all_figures(t_figure *head);
 int				get_board_size(t_figure *head);
 
 #endif

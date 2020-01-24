@@ -12,22 +12,7 @@
 
 #include "fillit.h"
 
-static int  ft_size(int size)
-{
-    int board_size;
-
-    board_size = 0;
-    size *= 4;
-    printf("size ==> %d\n", size);
-    while (size > (board_size * board_size))
-    {
-        printf("board_size ==> %d\n", board_size);
-        board_size++;
-    }
-    return (board_size);
-}
-
-int     get_board_size(t_figure *head)
+static int  get_number_figures(t_figure *head)
 {
     int count;
 
@@ -37,6 +22,23 @@ int     get_board_size(t_figure *head)
         head = head->next;
         count++;
     }
-    printf("count ==> %d\n", count);
-    return (ft_size(count));
+    return (count);
+}
+
+int     get_board_size(t_figure *head)
+{
+    int board_size;
+    int num_figures;
+    int size;
+
+    board_size = 0;
+    num_figures = get_number_figures(head);
+    printf("num_figures ==> %d\n", num_figures);
+    size = num_figures * 4;
+    while (size > (board_size * board_size))
+    {
+        printf("board_size ==> %d\n", board_size);
+        board_size++;
+    }
+    return (board_size);
 }
