@@ -12,7 +12,12 @@
 
 #ifndef LIBFT_H
 # define LIBFT_H
+# define BUFF_SIZE 10
 # include <string.h>
+# include <stdio.h>
+# include <fcntl.h>
+# include <stdlib.h>
+# include <unistd.h>
 
 typedef struct	s_list
 {
@@ -20,6 +25,13 @@ typedef struct	s_list
 	size_t			content_size;
 	struct s_list	*next;
 }				t_list;
+
+typedef struct	s_struct
+{
+	int				fd;
+	char			*rest;
+	struct s_struct	*next;
+}				t_struct;
 
 int				ft_atoi(const char *str);
 int				ft_islower(int c);
@@ -92,5 +104,7 @@ void			ft_swap(int *a, int *b);
 int				ft_str_is_alpha(char *str);
 int				ft_str_is_lowercase(char *str);
 int				ft_str_is_uppercase(char *str);
+
+int				get_next_line(const int fd, char **line);
 
 #endif

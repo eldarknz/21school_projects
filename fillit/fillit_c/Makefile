@@ -12,31 +12,25 @@
 
 NAME=fillit
 
-FLAG=-Wall -Wextra -Werror
+SRCS=*.c
 
-INC=-I ./
+OBJECTS=*.o
 
-SRC=main.c
+INCLUDES=libft/
 
-OBJ=$(SRC:.c=.o)
-
-LIB=./libft/libft.a
-
-$(NAME): $(OBJ)
-	make -C ./libft
-	gcc $(FLAG) $(OBJ) $(INC) $(LIB) -o $(NAME)
-
-%.o:%.c
-	gcc $(FLAG) $(INC) -c $< -o $@
+FLAGS=-Werror -Wextra -Wall
 
 all: $(NAME)
 
+$(NAME):
+	@make -C libft/ re
+	gcc -o $(NAME) $(FLAGS) src/$(SRCS) $(INCLUDES)libft.a
+
 clean:
-	make -C ./libft clean
-	/bin/rm -rf $(OBJ)
+	@make -C libft/ clean
 
 fclean: clean
-	make -C ./libft fclean
-	/bin/rm -rf $(NAME)
+	/bin/rm -f $(NAME)
+	@make -C libft/ fclean
 
 re: fclean all

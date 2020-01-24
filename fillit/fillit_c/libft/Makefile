@@ -29,7 +29,7 @@ SRCS=ft_atoi.c ft_bzero.c ft_dup.c ft_isalnum.c \
 	 ft_strrchr.c ft_strrev.c ft_strsplit.c ft_strstr.c ft_strrev.c \
 	 ft_strsub.c ft_strtrim.c ft_tolower.c ft_toupper.c ft_div_mod.c \
 	 ft_swap.c ft_str_is_alpha.c ft_str_is_lowercase.c \
-	 ft_str_is_uppercase.c
+	 ft_str_is_uppercase.c get_next_line.c
 
 OBJECTS=ft_atoi.o ft_bzero.o ft_dup.o ft_isalnum.o \
 		ft_isalpha.o ft_isascii.o ft_isdigit.o ft_islower.o ft_isprint.o \
@@ -46,7 +46,7 @@ OBJECTS=ft_atoi.o ft_bzero.o ft_dup.o ft_isalnum.o \
 		ft_strrchr.o ft_strrev.o ft_strsplit.o ft_strstr.o ft_strrev.o \
 		ft_strsub.o ft_strtrim.o ft_tolower.o ft_toupper.o ft_div_mod.o \
 		ft_swap.o ft_str_is_alpha.o ft_str_is_lowercase.o \
-		ft_str_is_uppercase.o
+		ft_str_is_uppercase.o get_next_line.o
 
 INCLUDES=./
 
