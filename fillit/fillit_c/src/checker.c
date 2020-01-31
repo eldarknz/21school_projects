@@ -53,7 +53,7 @@ static void figure_checker(char **figure)
     }
     printf("bond ==> %d\n", bond);
 	if (bond != 8 && bond != 6)
-		ft_error(1);
+		error_handler(1);
 }
 
 static void figure_validation(char **figure)
@@ -72,13 +72,14 @@ static void figure_validation(char **figure)
             if (figure[row][c] == '#')
                 count++;
             if (figure[row][c] != '.' && figure[row][c] != '#')
-                ft_error(1);
+                error_handler(1);
             c++; 
         }
         row++;
     }
+    printf("count ==> %d\n", count);
     if (count != 4)
-        ft_error(1);
+        error_handler(1);
 }
 
 void    check_figures(t_figure *head)

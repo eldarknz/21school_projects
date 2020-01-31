@@ -15,4 +15,5 @@
 void        set_change(t_figure *head, int size)
 {
     shift_all_figures(head);
+    printf("size ==> %d\n", size);
 }

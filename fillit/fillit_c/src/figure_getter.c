@@ -37,11 +37,11 @@ static int		check_row(t_figure *tmp, char **row, int num, int key)
 	int len;
 	len = ft_strlen(*row);
 	if (len != key)
-		ft_error(1);
+		error_handler(1);
 	if (key == 0)
 	{
 		if (num > 24)
-			ft_error(2);
+			error_handler(2);
 		tmp->num = num;
 		tmp->size = 4;
 		tmp->next = new_figure(4);

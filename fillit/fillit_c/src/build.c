@@ -17,23 +17,22 @@ int		main(int ac, char **av)
 	t_figure	*head;
 	int			fd;
 	int			board_size;
-	//t_figure	*tmp;
-	//int			i;
+	t_figure	*tmp;
+	int			i;
 
 	if (ac != 2)
-		ft_error(0);
+		error_handler(0);
 	if ((fd = open(av[1], O_RDONLY)) == -1)
-		ft_error(-1);
+		error_handler(-1);
 	head = get_figure(fd);
 	close(fd);
 	check_figures(head);
-	board_size = get_board_size(head)
-	printf("board_size ==> %d\n", board_size);
-	
+	board_size = get_board_size(head);
+	//printf("board_size ==> %d\n", board_size);
 	set_change(head, board_size);
-	//tmp = head;
-	//i = 0;
-	/*while (tmp)
+	tmp = head;
+	i = 0;
+	while (tmp)
 	{
 		while (i < 4)
 		{
@@ -43,5 +42,5 @@ int		main(int ac, char **av)
 		tmp = tmp->next;
 		i = 0;
 		printf("\n");
-	}*/
+	}
 }

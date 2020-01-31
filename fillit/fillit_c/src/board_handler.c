@@ -29,15 +29,18 @@ int     get_board_size(t_figure *head)
 {
     int board_size;
     int num_figures;
-    int size;
+    int num_cells;
+    int max_size_figure;
 
-    board_size = 0;
+    board_size = 3;
     num_figures = get_number_figures(head);
+    max_size_figure = get_max_size_figure(head);
+    printf("max_size_figure ==> %d\n", max_size_figure);
     printf("num_figures ==> %d\n", num_figures);
-    size = num_figures * 4;
-    while (size > (board_size * board_size))
+    num_cells = num_figures * 4;
+    while (num_cells > (board_size * board_size))
     {
-        printf("board_size ==> %d\n", board_size);
+        //printf("board_size ==> %d\n", board_size);
         board_size++;
     }
     return (board_size);
