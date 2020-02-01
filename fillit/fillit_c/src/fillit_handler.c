@@ -223,6 +223,7 @@ int			is_overlap(t_figure *head, t_figure *body)
 	ret = 0;
 	while (head->num < body->num)
 	{
+		//printf("head_num body_num ===> %d %d\n", head->num, body->num);
 		if ((ret = figure_compare(head->figure, body->figure, head->size)) == 1)
 			break ;
 		head = head->next;
@@ -237,6 +238,7 @@ void		back_track(t_figure *head)
 	tmp = head;
 	while (tmp)
 	{
+		printf("head_num tmp_num ===> %d %d\n", head->num, tmp->num);
 		while (is_overlap(head, tmp))
 			if (move_next(tmp))
 			{

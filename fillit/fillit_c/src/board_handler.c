@@ -31,7 +31,7 @@ int     get_board_size(t_figure *head)
     int num_figures;
     int num_cells;
 
-    board_size = 0;
+    board_size = 3;
     num_figures = get_number_figures(head);
     //board_size = get_max_size_figure(head);
     //printf("max_size_figure ==> %d\n", board_size);
