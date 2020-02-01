@@ -28,7 +28,7 @@ int		main(int ac, char **av)
 	close(fd);
 	check_figures(head);
 	board_size = get_board_size(head);
-	//printf("board_size ==> %d\n", board_size);
+	printf("board_size ==> %d\n", board_size);
 	set_change(head, board_size);
 	tmp = head;
 	i = 0;

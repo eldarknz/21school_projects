@@ -14,92 +14,110 @@
 
 static int  get_right(char **fig)
 {
-    int i;
-    int j;
-    int left;
-    int is_left;
+  int i;
+  int j;
+  int index;
 
-    i = 0;
-    left = 0;
-    is_left = 0;
-	while (i < 4 && !is_left)
+  i = 0;
+  index = -1;
+  while (i < 4)
+  {
+    j = 0;
+    while (j < 4)
     {
-        j = 3;
-        while (j >= 0 && !is_left)
-        {
-            printf("%c", fig[i][j]);
-            if (fig[i][j] != '.')
-            {
-                left = j;
-                is_left = 1;
-                printf("\ni, j ===> %d %d", i, j);
-            }
-            j--;
-        }
-        printf("\n----------------\n");
-        i++;
+      if (fig[i][j] != '.' && j > index)
+        index = j;
+      j++;
     }
-    return (left);
+    i++;
+  }
+  return (index);
 }
 
 static int  get_left(char **fig)
 {
-    int i;
-    int j;
-    int left;
-    int is_left;
+  int i;
+  int j;
+  int index;
 
+  i = 0;
+  index = 4;
+  while (i < 4)
+  {
     j = 0;
-    left = 0;
-    is_left = 0;
-	while (j < 4 && !is_left)
+    while (j < 4)
     {
-        i = 0;
-        while (i < 4 && !is_left)
-        {
-            printf("%c", fig[j][i]);
-            if (fig[j][i] != '.')
-            {
-                left = j;
-                is_left = 1;
-                printf("\ni, j ===> %d %d", i, j);
-            }
-            i++;
-        }
-        printf("\n----------------\n");
-        j++;
+      if (fig[i][j] != '.' && j < index)
+        index = j;
+      j++;
     }
-    return (left);
+    i++;
+  }
+  return (index);
 }
 
-static int  get_max_size(t_figure *fig)
+static int  get_top(char **fig)
 {
-    int width;
-    int left;
-    int right;
+  int i;
+  int j;
+  int index;
 
-    width = 0;
-    left = get_left(fig->figure);
-    printf("\n-------------------------------------\n");
-    right = get_right(fig->figure);
+  j = 0;
+  index = 4;
+  while (j < 4)
+  {
+    i = 0;
+    while (i < 4)
+    {
+      if (fig[j][i] != '.' && j < index)
+      {
+        index = j;
+      }
+      i++;
+    }
+    j++;
+  }
+  return (index);
+}
 
-    printf("left ==> %d\n", left);
-    printf("right ==> %d\n", right);
-    return (width);
+static int  get_bottom(char **fig)
+{
+  int i;
+  int j;
+  int index;
+
+  j = 0;
+  index = -1;
+  while (j < 4)
+  {
+    i = 0;
+    while (i < 4)
+    {
+      if (fig[j][i] != '.' && j > index)
+        index = j;
+      i++;
+    }
+    j++;
+  }
+  return (index);
 }
 
 int         get_max_size_figure(t_figure *head)
 {
-	int cur_max_size;
+    int width;
+    int height;
+    int cur_max_size;
     int next_max_size;
 
     cur_max_size = 0;
     while(head)
     {
-        next_max_size = get_max_size(head);
-        if (next_max_size > cur_max_size)
-            cur_max_size = next_max_size;
-		head = head->next; 
+      width = (get_right(head->figure) + 1) - get_left(head->figure);
+      height = (get_bottom(head->figure) + 1) - get_top(head->figure);
+      next_max_size = (width > height) ? width : height;
+      if (next_max_size > cur_max_size)
+          cur_max_size = next_max_size;
+      head = head->next;
     }
 	return (cur_max_size);
 }
