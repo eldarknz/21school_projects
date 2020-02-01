@@ -21,7 +21,7 @@ void        swap_char(char *c1, char *c2)
 	*c2 = ch;
 }
 
-static void shift_left(char **fig, int size)
+void		shift_left(char **fig, int size)
 {
 	int	i;
 	int	j;

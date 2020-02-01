@@ -51,7 +51,7 @@ static void figure_checker(char **figure)
         }
         row++;
     }
-    printf("bond ==> %d\n", bond);
+    //printf("bond ==> %d\n", bond);
 	if (bond != 8 && bond != 6)
 		error_handler(1);
 }
@@ -77,7 +77,7 @@ static void figure_validation(char **figure)
         }
         row++;
     }
-    printf("count ==> %d\n", count);
+    //printf("count ==> %d\n", count);
     if (count != 4)
         error_handler(1);
 }
