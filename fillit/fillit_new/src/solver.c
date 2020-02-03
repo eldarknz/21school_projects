@@ -97,7 +97,7 @@ void	solve(t_figure *figurelist)
 	t_map	*map;
 	int		map_size;
 
-	map_size = get_map_size(count_figures(figurelist) * 4);
+	map_size = get_map_size(figure_counter(figurelist) * 4);
 	map = new_map(map_size);
 	while (!solve_map(map, figurelist, map_size))
 	{

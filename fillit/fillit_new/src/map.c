@@ -39,7 +39,7 @@ t_map	*new_map(int map_size)
 	return (map);
 }
 
-size_t	count_figures(t_figure *figurelist)
+size_t	figure_counter(t_figure *figurelist)
 {
 	size_t	count;
 

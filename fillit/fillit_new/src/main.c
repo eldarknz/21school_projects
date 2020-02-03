@@ -21,7 +21,7 @@ int	main(int ac, char **av)
 		ft_putstr("usage: ./fillit source_file\n");
 		return (1);
 	}
-	list = parser(av[1]);
+	list = read_data(av[1]);
 	if (!list)
 	{
 		ft_putstr("error\n");
