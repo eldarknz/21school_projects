@@ -12,7 +12,7 @@
 
 #include "fillit.h"
 
-static void	fill_letters(t_figure *head)
+void	fill_letters(t_figure *head)
 {
 	int i;
 	int j;
@@ -28,14 +28,5 @@ static void	fill_letters(t_figure *head)
 			j++;
 		}
 		i++;
-	}
-}
-
-void		fill_figure(t_figure *start)
-{
-	while (start)
-	{
-		fill_letters(start);
-		start = start->next;
 	}
 }

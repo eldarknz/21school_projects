@@ -1,41 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fill_handler.c                                     :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkayla <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/01 16:49:42 by hkayla            #+#    #+#             */
-/*   Updated: 2020/02/01 16:49:46 by hkayla           ###   ########.fr       */
+/*   Created: 2019/09/20 15:11:17 by hkayla            #+#    #+#             */
+/*   Updated: 2019/09/20 15:11:23 by hkayla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
-
-static void	fill_letters(t_figure *head)
+int	ft_atoi(const char *str)
 {
-	int i;
-	int j;
+	int	res;
+	int	negative;
 
-	i = 0;
-	while (i < head->size)
+	negative = 1;
+	res = 0;
+	while (*str && (*str == ' ' || *str == '\n' || *str == '\t' ||
+			*str == '\v' || *str == '\f' || *str == '\r'))
+		++str;
+	if (*str == '-')
+		negative = -1;
+	if (*str == '-' || *str == '+')
+		++str;
+	while (*str && *str >= '0' && *str <= '9')
 	{
-		j = 0;
-		while (j < head->size)
-		{
-			if (head->figure[i][j] != '.')
-				head->figure[i][j] = head->num + 'A';
-			j++;
-		}
-		i++;
+		res = res * 10 + (*str - 48);
+		++str;
 	}
-}
-
-void		fill_figure(t_figure *start)
-{
-	while (start)
-	{
-		fill_letters(start);
-		start = start->next;
-	}
+	return (res * negative);
 }

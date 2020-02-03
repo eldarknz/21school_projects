@@ -1,41 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fill_handler.c                                     :+:      :+:    :+:   */
+/*   ft_memalloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkayla <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/01 16:49:42 by hkayla            #+#    #+#             */
-/*   Updated: 2020/02/01 16:49:46 by hkayla           ###   ########.fr       */
+/*   Created: 2019/09/20 16:16:28 by hkayla            #+#    #+#             */
+/*   Updated: 2019/09/20 16:28:39 by hkayla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
+#include <stdlib.h>
 
-static void	fill_letters(t_figure *head)
+void	*ft_memalloc(size_t size)
 {
-	int i;
-	int j;
+	void	*mem;
 
-	i = 0;
-	while (i < head->size)
-	{
-		j = 0;
-		while (j < head->size)
-		{
-			if (head->figure[i][j] != '.')
-				head->figure[i][j] = head->num + 'A';
-			j++;
-		}
-		i++;
-	}
-}
-
-void		fill_figure(t_figure *start)
-{
-	while (start)
-	{
-		fill_letters(start);
-		start = start->next;
-	}
+	if (!(mem = malloc(size)))
+		return (NULL);
+	ft_bzero(mem, size);
+	return (mem);
 }

@@ -1,41 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fill_handler.c                                     :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkayla <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/01 16:49:42 by hkayla            #+#    #+#             */
-/*   Updated: 2020/02/01 16:49:46 by hkayla           ###   ########.fr       */
+/*   Created: 2019/09/20 17:19:27 by hkayla            #+#    #+#             */
+/*   Updated: 2019/09/20 17:40:08 by hkayla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-static void	fill_letters(t_figure *head)
+t_list	*ft_lstnew(void const *content, size_t content_size)
 {
-	int i;
-	int j;
+	t_list	*list;
 
-	i = 0;
-	while (i < head->size)
+	if (!(list = (t_list*)ft_memalloc(sizeof(t_list))))
+		return (NULL);
+	if (!content)
 	{
-		j = 0;
-		while (j < head->size)
-		{
-			if (head->figure[i][j] != '.')
-				head->figure[i][j] = head->num + 'A';
-			j++;
-		}
-		i++;
+		list->content = NULL;
+		list->content_size = 0;
 	}
-}
-
-void		fill_figure(t_figure *start)
-{
-	while (start)
+	else
 	{
-		fill_letters(start);
-		start = start->next;
+		if ((list->content = ft_dup(content, content_size)) == NULL)
+			return (NULL);
+		list->content_size = content_size;
 	}
+	list->next = NULL;
+	return (list);
 }

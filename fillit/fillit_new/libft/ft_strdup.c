@@ -1,41 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fill_handler.c                                     :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkayla <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/01 16:49:42 by hkayla            #+#    #+#             */
-/*   Updated: 2020/02/01 16:49:46 by hkayla           ###   ########.fr       */
+/*   Created: 2019/09/20 15:29:50 by hkayla            #+#    #+#             */
+/*   Updated: 2019/09/20 15:32:03 by hkayla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include <stdlib.h>
 
-static void	fill_letters(t_figure *head)
+char	*ft_strdup(const char *src)
 {
-	int i;
-	int j;
+	char	*new;
+	int		i;
+	int		size;
 
+	size = 0;
+	while (src[size])
+		++size;
+	if (!(new = malloc(sizeof(char) * (size + 1))))
+		return (NULL);
 	i = 0;
-	while (i < head->size)
+	while (src[i])
 	{
-		j = 0;
-		while (j < head->size)
-		{
-			if (head->figure[i][j] != '.')
-				head->figure[i][j] = head->num + 'A';
-			j++;
-		}
+		new[i] = src[i];
 		i++;
 	}
-}
-
-void		fill_figure(t_figure *start)
-{
-	while (start)
-	{
-		fill_letters(start);
-		start = start->next;
-	}
+	new[i] = '\0';
+	return (new);
 }

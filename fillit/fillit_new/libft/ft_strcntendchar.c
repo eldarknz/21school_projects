@@ -1,41 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fill_handler.c                                     :+:      :+:    :+:   */
+/*   ft_strcntendchar.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkayla <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/01 16:49:42 by hkayla            #+#    #+#             */
-/*   Updated: 2020/02/01 16:49:46 by hkayla           ###   ########.fr       */
+/*   Created: 2019/09/25 19:26:19 by hkayla            #+#    #+#             */
+/*   Updated: 2019/09/25 19:26:20 by hkayla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-static void	fill_letters(t_figure *head)
+unsigned int	ft_strcntendchar(char *str, const char *charset)
 {
-	int i;
-	int j;
+	unsigned int	i;
+	int				index;
+	unsigned int	count;
+	unsigned int	tmp;
 
-	i = 0;
-	while (i < head->size)
+	count = 0;
+	i = (unsigned int)ft_strlen(str) - 1;
+	while (str[i])
 	{
-		j = 0;
-		while (j < head->size)
-		{
-			if (head->figure[i][j] != '.')
-				head->figure[i][j] = head->num + 'A';
-			j++;
-		}
-		i++;
+		index = 0;
+		tmp = count;
+		while (charset[index])
+			if (charset[index++] == str[i])
+				++count;
+		if (count == tmp)
+			return (count);
+		--i;
 	}
-}
-
-void		fill_figure(t_figure *start)
-{
-	while (start)
-	{
-		fill_letters(start);
-		start = start->next;
-	}
+	return (count);
 }

@@ -1,41 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fill_handler.c                                     :+:      :+:    :+:   */
+/*   ft_strrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkayla <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/01 16:49:42 by hkayla            #+#    #+#             */
-/*   Updated: 2020/02/01 16:49:46 by hkayla           ###   ########.fr       */
+/*   Created: 2019/09/25 19:35:32 by hkayla            #+#    #+#             */
+/*   Updated: 2019/09/25 19:36:10 by hkayla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-static void	fill_letters(t_figure *head)
+char	*ft_strrev(char *str)
 {
-	int i;
-	int j;
+	int		x;
+	char	i;
+	int		start;
 
-	i = 0;
-	while (i < head->size)
+	x = 0;
+	start = 0;
+	while (str[x] != '\0')
 	{
-		j = 0;
-		while (j < head->size)
-		{
-			if (head->figure[i][j] != '.')
-				head->figure[i][j] = head->num + 'A';
-			j++;
-		}
-		i++;
+		x++;
 	}
-}
-
-void		fill_figure(t_figure *start)
-{
-	while (start)
+	while (start < x / 2)
 	{
-		fill_letters(start);
-		start = start->next;
+		i = str[x - 1 - start];
+		str[x - 1 - start] = str[start];
+		str[start] = i;
+		start++;
 	}
+	return (str);
 }

@@ -1,41 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fill_handler.c                                     :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkayla <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/01 16:49:42 by hkayla            #+#    #+#             */
-/*   Updated: 2020/02/01 16:49:46 by hkayla           ###   ########.fr       */
+/*   Created: 2019/09/20 16:26:50 by hkayla            #+#    #+#             */
+/*   Updated: 2019/09/25 11:11:13 by hkayla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-static void	fill_letters(t_figure *head)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	int i;
-	int j;
+	size_t			i;
+	unsigned char	*ptr;
+	unsigned char	*ptr2;
 
+	if (n == 0)
+		return (0);
+	ptr = (unsigned char*)s1;
+	ptr2 = (unsigned char*)s2;
 	i = 0;
-	while (i < head->size)
+	while (*ptr == *ptr2 && ++i < n)
 	{
-		j = 0;
-		while (j < head->size)
-		{
-			if (head->figure[i][j] != '.')
-				head->figure[i][j] = head->num + 'A';
-			j++;
-		}
-		i++;
+		ptr++;
+		ptr2++;
 	}
-}
-
-void		fill_figure(t_figure *start)
-{
-	while (start)
-	{
-		fill_letters(start);
-		start = start->next;
-	}
+	return ((int)(*ptr - *ptr2));
 }

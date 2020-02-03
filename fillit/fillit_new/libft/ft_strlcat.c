@@ -1,41 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fill_handler.c                                     :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkayla <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/01 16:49:42 by hkayla            #+#    #+#             */
-/*   Updated: 2020/02/01 16:49:46 by hkayla           ###   ########.fr       */
+/*   Created: 2019/09/25 11:38:03 by hkayla            #+#    #+#             */
+/*   Updated: 2019/09/25 11:38:10 by hkayla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
+#include <string.h>
 
-static void	fill_letters(t_figure *head)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	int i;
-	int j;
+	size_t i;
+	size_t j;
 
 	i = 0;
-	while (i < head->size)
-	{
-		j = 0;
-		while (j < head->size)
-		{
-			if (head->figure[i][j] != '.')
-				head->figure[i][j] = head->num + 'A';
-			j++;
-		}
+	j = 0;
+	while (dst[i] && i < size)
 		i++;
-	}
-}
-
-void		fill_figure(t_figure *start)
-{
-	while (start)
+	while (src[j] && (i + j + 1) < size)
 	{
-		fill_letters(start);
-		start = start->next;
+		dst[i + j] = src[j];
+		j++;
 	}
+	if (i < size)
+		dst[i + j] = 0;
+	return (i + ft_strlen(src));
 }

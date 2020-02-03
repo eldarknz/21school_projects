@@ -1,41 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fill_handler.c                                     :+:      :+:    :+:   */
+/*   ft_strequ.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkayla <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/01 16:49:42 by hkayla            #+#    #+#             */
-/*   Updated: 2020/02/01 16:49:46 by hkayla           ###   ########.fr       */
+/*   Created: 2019/09/20 16:53:58 by hkayla            #+#    #+#             */
+/*   Updated: 2019/09/20 16:54:13 by hkayla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-static void	fill_letters(t_figure *head)
+int	ft_strequ(char const *s1, char const *s2)
 {
-	int i;
-	int j;
+	unsigned int	i;
 
 	i = 0;
-	while (i < head->size)
+	if (!s1 || !s2)
+		return (s1 == s2 ? 1 : 0);
+	if (ft_strlen((char*)s1) != ft_strlen((char*)s2))
+		return (0);
+	while (s1[i] && s2[i])
 	{
-		j = 0;
-		while (j < head->size)
-		{
-			if (head->figure[i][j] != '.')
-				head->figure[i][j] = head->num + 'A';
-			j++;
-		}
-		i++;
+		if (s1[i] != s2[i])
+			return (0);
+		++i;
 	}
-}
-
-void		fill_figure(t_figure *start)
-{
-	while (start)
-	{
-		fill_letters(start);
-		start = start->next;
-	}
+	return (1);
 }

@@ -1,41 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fill_handler.c                                     :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkayla <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/01 16:49:42 by hkayla            #+#    #+#             */
-/*   Updated: 2020/02/01 16:49:46 by hkayla           ###   ########.fr       */
+/*   Created: 2019/09/20 16:07:54 by hkayla            #+#    #+#             */
+/*   Updated: 2019/09/20 16:07:58 by hkayla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
-
-static void	fill_letters(t_figure *head)
+char	*ft_strrchr(const char *s, int c)
 {
-	int i;
-	int j;
+	char	*last_pos;
 
-	i = 0;
-	while (i < head->size)
+	last_pos = (0);
+	while (*s)
 	{
-		j = 0;
-		while (j < head->size)
-		{
-			if (head->figure[i][j] != '.')
-				head->figure[i][j] = head->num + 'A';
-			j++;
-		}
-		i++;
+		if (*s == c)
+			last_pos = (char*)s;
+		++s;
 	}
-}
-
-void		fill_figure(t_figure *start)
-{
-	while (start)
-	{
-		fill_letters(start);
-		start = start->next;
-	}
+	if (last_pos)
+		return (last_pos);
+	if (c == '\0')
+		return ((char*)s);
+	return (0);
 }

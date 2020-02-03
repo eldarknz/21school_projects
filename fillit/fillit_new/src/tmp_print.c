@@ -1,41 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fill_handler.c                                     :+:      :+:    :+:   */
+/*   tmp_print.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkayla <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/01 16:49:42 by hkayla            #+#    #+#             */
-/*   Updated: 2020/02/01 16:49:46 by hkayla           ###   ########.fr       */
+/*   Created: 2020/02/01 18:59:53 by hkayla            #+#    #+#             */
+/*   Updated: 2020/02/01 19:01:18 by hkayla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+#include "stdio.h"
 
-static void	fill_letters(t_figure *head)
+void	tmp_print(t_figure *head)
 {
-	int i;
-	int j;
+	t_figure	*tmp;
+	int			i;
 
+	tmp = head;
 	i = 0;
-	while (i < head->size)
+	while (tmp)
 	{
-		j = 0;
-		while (j < head->size)
+		while (i < 4)
 		{
-			if (head->figure[i][j] != '.')
-				head->figure[i][j] = head->num + 'A';
-			j++;
+			printf("figure ==> %s\n", tmp->figure[i]);
+			i++;
 		}
-		i++;
-	}
-}
-
-void		fill_figure(t_figure *start)
-{
-	while (start)
-	{
-		fill_letters(start);
-		start = start->next;
+		tmp = tmp->next;
+		i = 0;
+		printf("\n");
 	}
 }

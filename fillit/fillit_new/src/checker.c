@@ -32,7 +32,7 @@ static int  check_neighbors(char **figure, int row, int c)
     return (bond);
 }
 
-static void figure_checker(char **figure)
+void figure_checker(char **figure)
 {
     int row;
     int c;
@@ -56,7 +56,7 @@ static void figure_checker(char **figure)
 		error_handler(1);
 }
 
-static void figure_validation(char **figure)
+void figure_validation(char **figure)
 {
     int row;
     int c;
@@ -80,14 +80,4 @@ static void figure_validation(char **figure)
     //printf("count ==> %d\n", count);
     if (count != 4)
         error_handler(1);
-}
-
-void    check_figures(t_figure *head)
-{
-    while (head)
-    {
-        figure_validation(head->figure);
-        figure_checker(head->figure);
-        head = head->next;
-    }
 }

@@ -1,41 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fill_handler.c                                     :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkayla <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/01 16:49:42 by hkayla            #+#    #+#             */
-/*   Updated: 2020/02/01 16:49:46 by hkayla           ###   ########.fr       */
+/*   Created: 2019/09/20 15:22:57 by hkayla            #+#    #+#             */
+/*   Updated: 2019/09/20 15:23:00 by hkayla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
-
-static void	fill_letters(t_figure *head)
+char	*ft_strcat(char *dest, const char *src)
 {
-	int i;
-	int j;
+	unsigned int	i;
+	unsigned int	j;
 
 	i = 0;
-	while (i < head->size)
+	while (dest[i] != '\0')
+		++i;
+	j = 0;
+	while (src[j] != '\0')
 	{
-		j = 0;
-		while (j < head->size)
-		{
-			if (head->figure[i][j] != '.')
-				head->figure[i][j] = head->num + 'A';
-			j++;
-		}
+		dest[i] = src[j];
 		i++;
+		++j;
 	}
-}
-
-void		fill_figure(t_figure *start)
-{
-	while (start)
-	{
-		fill_letters(start);
-		start = start->next;
-	}
+	dest[i] = '\0';
+	return (dest);
 }
