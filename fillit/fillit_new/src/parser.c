@@ -24,7 +24,7 @@ void		free_list(t_figure *list)
 	}
 }
 
-t_figure		*shift_top_left(t_figure *figure)
+t_figure	*shift_top_left(t_figure *figure)
 {
 	while (figure->figurecoord[0] != 0 && \
 			figure->figurecoord[2] != 0 && \
@@ -39,12 +39,12 @@ t_figure		*shift_top_left(t_figure *figure)
 	return (figure);
 }
 
-t_figure		*makefigure(char *buf, char figuresymbol)
+t_figure	*makefigure(char *buf, char figuresymbol)
 {
 	t_figure	*figure_ptr;
-	int		x;
-	int		y;
-	int		i;
+	int			x;
+	int			y;
+	int			i;
 
 	i = 0;
 	x = 0;
@@ -68,12 +68,12 @@ t_figure		*makefigure(char *buf, char figuresymbol)
 	return (shift_top_left(figure_ptr));
 }
 
-t_figure		*makelist(char *buf, int size)
+t_figure	*makelist(char *buf, int size)
 {
-	t_figure *current;
-	t_figure *beginning;
-	int		i;
-	char	figuresymbol;
+	t_figure	*current;
+	t_figure	*beginning;
+	int			i;
+	char		figuresymbol;
 
 	i = 0;
 	figuresymbol = 'A';
@@ -96,7 +96,7 @@ t_figure		*makelist(char *buf, int size)
 	return (beginning);
 }
 
-t_figure		*parser(char *filename)
+t_figure	*parser(char *filename)
 {
 	char	buf[545];
 	int		fd;
