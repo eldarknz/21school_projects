@@ -1,37 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   build.c                                            :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkayla <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/22 14:19:57 by hkayla            #+#    #+#             */
-/*   Updated: 2020/01/22 14:44:35 by hkayla           ###   ########.fr       */
+/*   Created: 2020/02/03 14:30:48 by hkayla            #+#    #+#             */
+/*   Updated: 2020/02/03 14:30:52 by hkayla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		main(int ac, char **av)
+int	main(int ac, char **av)
 {
-	t_figure	*head;
-	int			fd;
-	int			board_size;
+	t_figure	*list;
 
 	if (ac != 2)
-		error_handler(0);
-	if ((fd = open(av[1], O_RDONLY)) == -1)
-		error_handler(-1);
-	head = get_figure(fd);
-	close(fd);
-	check_figures(head);
-	board_size = get_board_size(head);
-	set_change(head, board_size);
-	fill_figure(head);
-	tmp_print(head);
-
-	//back_track(head);
-	//fillit(head);
-	//print(head);
-	//dell_all_figures(head);
+	{
+		ft_putstr("usage: ./fillit source_file\n");
+		return (1);
+	}
+	list = parser(av[1]);
+	if (!list)
+	{
+		ft_putstr("error\n");
+		return (1);
+	}
+	solve(list);
+	free_list(list);
+	return (0);
 }

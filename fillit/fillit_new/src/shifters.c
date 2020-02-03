@@ -1,37 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   build.c                                            :+:      :+:    :+:   */
+/*   shifters.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkayla <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/22 14:19:57 by hkayla            #+#    #+#             */
-/*   Updated: 2020/01/22 14:44:35 by hkayla           ###   ########.fr       */
+/*   Created: 2020/02/03 14:31:23 by hkayla            #+#    #+#             */
+/*   Updated: 2020/02/03 14:31:25 by hkayla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		main(int ac, char **av)
+void	shift_x(t_figure *figure, int n)
 {
-	t_figure	*head;
-	int			fd;
-	int			board_size;
+	figure->figurecoord[0] += n;
+	figure->figurecoord[2] += n;
+	figure->figurecoord[4] += n;
+	figure->figurecoord[6] += n;
+}
 
-	if (ac != 2)
-		error_handler(0);
-	if ((fd = open(av[1], O_RDONLY)) == -1)
-		error_handler(-1);
-	head = get_figure(fd);
-	close(fd);
-	check_figures(head);
-	board_size = get_board_size(head);
-	set_change(head, board_size);
-	fill_figure(head);
-	tmp_print(head);
-
-	//back_track(head);
-	//fillit(head);
-	//print(head);
-	//dell_all_figures(head);
+void	shift_y(t_figure *figure, int n)
+{
+	figure->figurecoord[1] += n;
+	figure->figurecoord[3] += n;
+	figure->figurecoord[5] += n;
+	figure->figurecoord[7] += n;
 }

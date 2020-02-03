@@ -26,12 +26,6 @@ typedef struct	s_figure
 	struct s_figure	*next;
 }				t_figure;
 
-typedef struct	s_map
-{
-	int				size;
-	char			**fill;
-}				t_map;
-
 t_figure		*get_figure(int fd);
 void			error_handler(int er);
 void			check_figures(t_figure *head);
