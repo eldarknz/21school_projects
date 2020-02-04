@@ -12,6 +12,24 @@
 
 #include "fillit.h"
 
+void	place(t_figure *figure, t_map *map, char letter)
+{
+	int i;
+	int x;
+	int y;
+
+	i = 0;
+	x = 0;
+	y = 0;
+	while (i <= 6)
+	{
+		x = figure->figurecoord[i] + figure->offset_x;
+		y = figure->figurecoord[i + 1] + figure->offset_y;
+		map->array[y][x] = letter;
+		i += 2;
+	}
+}
+
 int		overlap(t_map *map, t_figure *figure)
 {
 	int i;
@@ -30,24 +48,6 @@ int		overlap(t_map *map, t_figure *figure)
 		y = figure->figurecoord[i + 1] + figure->offset_y;
 	}
 	return (i != 8);
-}
-
-void	place(t_figure *figure, t_map *map, char letter)
-{
-	int i;
-	int x;
-	int y;
-
-	i = 0;
-	x = 0;
-	y = 0;
-	while (i <= 6)
-	{
-		x = figure->figurecoord[i] + figure->offset_x;
-		y = figure->figurecoord[i + 1] + figure->offset_y;
-		map->array[y][x] = letter;
-		i += 2;
-	}
 }
 
 int		in_bounds(t_figure *figure, int map_size, char axis)
@@ -70,6 +70,7 @@ int		solve_map(t_map *map, t_figure *figure, int map_size)
 		return (1);
 	figure->offset_x = 0;
 	figure->offset_y = 0;
+
 	while (in_bounds(figure, map_size, 'y'))
 	{
 		while (in_bounds(figure, map_size, 'x'))

@@ -18,16 +18,17 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 	{
-		ft_putstr("usage: ./fillit source_file\n");
+		ft_putendl("usage: ./fillit source_file");
 		return (1);
 	}
 	list = read_data(av[1]);
 	if (!list)
 	{
-		ft_putstr("error\n");
+		ft_putendl("error");
 		return (1);
 	}
 	solve(list);
 	free_list(list);
+	list = NULL;
 	return (0);
 }

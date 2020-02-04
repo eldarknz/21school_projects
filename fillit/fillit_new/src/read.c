@@ -71,7 +71,7 @@ t_figure	*make_figure(char *buf, char figuresymbol)
 t_figure	*make_list(char *buf, int size)
 {
 	t_figure	*current;
-	t_figure	*beginning;
+	t_figure	*head;
 	int			i;
 	char		figuresymbol;
 
@@ -81,8 +81,8 @@ t_figure	*make_list(char *buf, int size)
 	{
 		if (figuresymbol == 'A')
 		{
-			beginning = make_figure(buf + i, figuresymbol);
-			current = beginning;
+			head = make_figure(buf + i, figuresymbol);
+			current = head;
 		}
 		else
 		{
@@ -93,7 +93,7 @@ t_figure	*make_list(char *buf, int size)
 		i += 21;
 	}
 	current->next = NULL;
-	return (beginning);
+	return (head);
 }
 
 t_figure	*read_data(char *filename)
