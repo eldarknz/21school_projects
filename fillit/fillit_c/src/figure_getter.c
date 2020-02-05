@@ -63,7 +63,7 @@ t_figure		*get_figure(int fd)
 	num = 0;
 	while ((get_next_line(fd, &row)))
 	{
-        //printf("index ==> %d, num ==> %d\n", index, num);
+    printf("row ==> %s\n", row);
 		if (index == 4)
 		{
 			index = check_row(tmp, &row, num++, 0);
