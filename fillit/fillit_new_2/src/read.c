@@ -175,14 +175,16 @@ static int		check_row(t_array *array, char **row, int num, int key)
 
 t_figure	*read_data(int fd)
 {
-	char			*row;
-	t_array		*array;
-	int				index;
-	int				num;
+	t_array	*array;
+	char	*row;
+	int		index;
+	int		num;
+	int 	cnt;
 
 	array = new_array(4);
 	index = 0;
 	num = 0;
+	cnt = 0;
 	while ((get_next_line(fd, &row)))
 	{
 		if (index == 4)
@@ -195,6 +197,8 @@ t_figure	*read_data(int fd)
 		ft_strcpy(array->array[index++], row);
 		check_row(array, &row, num, 4);
 	}
+	if (index == 4)
+	
 	free_array(array, 4);
 	free(row);
 	return (NULL);

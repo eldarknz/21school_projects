@@ -43,7 +43,7 @@ void			shift_y(t_figure *figure, int y);
 void			solve(t_figure *figurelist);
 int				get_map_size(int num);
 size_t			figure_counter(t_figure *figurelist);
-int				solve_map(t_map *map, t_figure *figurelist, int map_size);
+int				solve_map(t_map *map, t_figure *figurelist, int map_size, int num);
 int				in_bounds(t_figure *figure, int map_size, char axis);
 int				overlap(t_map *map, t_figure *figure);
 void			place(t_figure *figure, t_map *map, char letter);
