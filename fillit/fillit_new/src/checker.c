@@ -47,22 +47,11 @@ int		character_counter(char *buf)
 	while (i < 19)
 	{
 		if (buf[i] && buf[i] != '\n' && buf[i] != '#' && buf[i] != '.')
-		{
-			printf("1");
 			return (0);
-		}
 		if (buf[i] == '\n' && !(((i + 1) % 5) == 0))
-		{
-			printf("2 ==> %d\n", !(((i + 1) % 5) == 0));
-			printf("2 ==> %d\n", ((i + 1) % 5));
-			printf("2 ==> %d, %c", i, buf[i]);
 			return (0);
-		}
 		if (buf[i] == '#')
-		{
-			printf("3");
 			count++;
-		}
 		i++;
 	}
 	if (!buf[i] || buf[i] != '\n')
