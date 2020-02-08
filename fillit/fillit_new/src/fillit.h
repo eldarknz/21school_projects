@@ -32,21 +32,21 @@ typedef struct	s_map
 }				t_map;
 
 t_figure		*read_data(char *filename);
-int				check(char *buf, int size);
+int				check_figure(char *buf, int size);
 int				character_counter(char *buf);
 int				neighbor_counter(char *buf);
-t_figure		*make_figure(char *buf, char figuresymbol);
-t_figure		*make_list(char *buf, int size);
+t_figure		*create_figure(char *buf, char figuresymbol);
+t_figure		*create_figure_list(char *buf, int size);
 t_figure		*shift_top_left(t_figure *figure);
 void			shift_x(t_figure *figure, int n);
 void			shift_y(t_figure *figure, int y);
 void			solve(t_figure *figurelist);
 int				get_map_size(int num);
 size_t			figure_counter(t_figure *figurelist);
-int				solve_map(t_map *map, t_figure *figurelist, int map_size, int num);
-int				in_bounds(t_figure *figure, int map_size, char axis);
-int				overlap(t_map *map, t_figure *figure);
-void			place(t_figure *figure, t_map *map, char letter);
+int				build_map(t_map *map, t_figure *figurelist, int map_size, int num);
+int				is_inside(t_figure *figure, int map_size, char axis);
+int				intersection(t_map *map, t_figure *figure);
+void			insert_figure(t_figure *figure, t_map *map, char letter);
 t_map			*new_map(int size);
 void			print_map(t_map *map, int size);
 void			free_list(t_figure *list);

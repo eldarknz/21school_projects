@@ -6,7 +6,7 @@
 #    By: hkayla <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/17 14:02:46 by hkayla            #+#    #+#              #
-#    Updated: 2019/12/17 14:12:41 by hkayla           ###   ########.fr        #
+#    Updated: 2020/02/07 14:09:42 by hkayla           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,23 +14,30 @@ NAME=fillit
 
 SRCS=*.c
 
-OBJECTS=*.o
+OBJ=$(SRC:.c=.o))
 
-INCLUDES=libft/
-
+CC = gcc
 FLAGS=-Werror -Wextra -Wall
+
+# ft library
+LIBFT= ./libft/
+
+# directories
+SRCDIR= ./src/
 
 all: $(NAME)
 
 $(NAME):
-	@make -C libft/ re
-	gcc -o $(NAME) $(FLAGS) src/$(SRCS) $(INCLUDES)libft.a
+	@make -C $(LIBFT) re
+	$(CC) -o $(NAME) $(FLAGS) $(SRCDIR)$(SRCS) $(LIBFT)libft.a
 
 clean:
-	@make -C libft/ clean
+	@make -C $(LIBFT) clean
 
 fclean: clean
 	/bin/rm -f $(NAME)
-	@make -C libft/ fclean
+	@make -C $(LIBFT) fclean
 
 re: fclean all
+
+.PHONY: all clean fclean re

@@ -6,13 +6,13 @@
 /*   By: hkayla <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 14:31:32 by hkayla            #+#    #+#             */
-/*   Updated: 2020/02/03 14:31:34 by hkayla           ###   ########.fr       */
+/*   Updated: 2020/02/07 11:30:22 by hkayla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	place(t_figure *figure, t_map *map, char letter)
+void	insert_figure(t_figure *figure, t_map *map, char letter)
 {
 	int i;
 	int x;
@@ -32,7 +32,7 @@ void	place(t_figure *figure, t_map *map, char letter)
 	}
 }
 
-int		overlap(t_map *map, t_figure *figure)
+int		intersection(t_map *map, t_figure *figure)
 {
 	int i;
 	int x;
@@ -48,8 +48,6 @@ int		overlap(t_map *map, t_figure *figure)
 	//printf("\n%c\n", figure->figuresymbol);
 	//printf("offset_x ===> %d, offset_y ===> %d\n", figure->offset_x, figure->offset_y);
 	i = 0;
-	x = 0;
-	y = 0;
 	x = figure->figurecoord[i] + figure->offset_x;
 	y = figure->figurecoord[i + 1] + figure->offset_y;
 	while (i <= 6 && map->array[y][x] == '.')
@@ -57,13 +55,13 @@ int		overlap(t_map *map, t_figure *figure)
 		i += 2;
 		x = figure->figurecoord[i] + figure->offset_x;
 		y = figure->figurecoord[i + 1] + figure->offset_y;
-		//printf("i ===> %d\n", i);
-		//printf("x ===> %d, y ===> %d\n", x, y);
+		printf("i ===> %d\n", i);
+		printf("x ===> %d, y ===> %d\n", x, y);
 	}
 	return (i != 8);
 }
 
-int		in_bounds(t_figure *figure, int map_size, char axis)
+int		is_inside(t_figure *figure, int map_size, char axis)
 {
 	if (axis == 'y')
 		return (figure->figurecoord[1] + figure->offset_y < map_size &&
@@ -77,34 +75,35 @@ int		in_bounds(t_figure *figure, int map_size, char axis)
 				figure->figurecoord[6] + figure->offset_x < map_size);
 }
 
-int		solve_map(t_map *map, t_figure *figure, int map_size, int num)
+int		build_map(t_map *map, t_figure *figure, int map_size, int num)
 {
 	if (!figure)
 		return (1);
 	figure->offset_x = 0;
 	figure->offset_y = 0;
 
-	while (in_bounds(figure, map_size, 'y'))
+	while (is_inside(figure, map_size, 'y'))
 	{
-		while (in_bounds(figure, map_size, 'x'))
+		while (is_inside(figure, map_size, 'x'))
 		{
-			if (!overlap(map, figure))
+			if (!intersection(map, figure))
 			{
-				place(figure, map, figure->figuresymbol);
-				//printf("maps_size ===> %d\n", map_size);
-				//print_map(map, map_size);
-				//printf("%d\n", num);
+				insert_figure(figure, map, figure->figuresymbol);
+				printf("maps_size ===> %d\n", map_size);
+				print_map(map, map_size);
+				printf("%d\n", num);
 				num++;
-				if (solve_map(map, figure->next, map_size, num))
+				if (build_map(map, figure->next, map_size, num))
 				{
-					//printf("Yes\n");
+					printf("Yes\n");
 					return (1);
 				}
 				else
 				{
-					//printf("No\n");
-					place(figure, map, '.');
-					//print_map(map, map_size);
+					printf("No\n");
+					insert_figure(figure, map, '.');
+					print_map(map, map_size);
+					printf("\n----------------\n");
 				}
 			}
 			//printf("2 - offset_x ===> %d, offset_y ===> %d\n", figure->offset_x, figure->offset_y);
@@ -124,7 +123,7 @@ void	solve(t_figure *figurelist)
 
 	map_size = get_map_size(figure_counter(figurelist) * 4);
 	map = new_map(map_size);
-	while (!solve_map(map, figurelist, map_size, 0))
+	while (!build_map(map, figurelist, map_size, 0))
 	{
 		free_map(map, map_size);
 		map_size++;
