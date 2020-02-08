@@ -16,14 +16,11 @@ void	shift_axis(t_figure *figure, int n, char axis)
 {
 	int	i;
 
-	if (axis == 'x')
-		i = 0;
-	else
-		i = 1;
+	i = (axis == 'x') ? 0 : 1;
 	while (i < 8)
 	{
 		figure->figurecoord[i] += n;
-		i+=2;
+		i += 2;
 	}
 }
 

@@ -46,9 +46,9 @@ int		character_counter(char *buf)
 	i = 0;
 	while (i < 19)
 	{
-		if (buf[i] && buf[i] != '\n' && buf[i] != '#' && buf[i] != '.')
+		if (buf[i] && buf[i] != '.' && buf[i] != '#' && buf[i] != '\n')
 			return (0);
-		if (buf[i] == '\n' && !(((i + 1) % 5) == 0))
+		if (buf[i] == '\n' && (i + 1) % 5 != 0)
 			return (0);
 		if (buf[i] == '#')
 			count++;
