@@ -80,14 +80,14 @@ t_figure	*create_figure_list(char *buf, int size)
 
 t_figure	*read_data(char *filename)
 {
-	char	buf[546];
+	char	buf[545];
 	int		fd;
 	int		bytes;
 
 	fd = open(filename, O_RDONLY);
-	bytes = read(fd, buf, 546);
+	bytes = read(fd, buf, 545);
 	close(fd);
-	if (bytes > 545 || bytes < 19)
+	if (bytes > 544 || bytes < 19)
 		return (NULL);
 	buf[bytes] = '\0';
 	if (!check_figure(buf, bytes))
