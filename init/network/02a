@@ -1,1 +1,2 @@
-ifconfig | grep broadcast | awk '{print $6}'
+var=`ifconfig en0 | grep broadcast | awk '{print $6}'`
+echo "Broadcast address: $var"

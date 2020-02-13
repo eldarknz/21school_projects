@@ -1,1 +1,2 @@
-whois slash16.org
+var=`nslookup slash16.org | grep Address | sed -n 2p | awk '{print $2}'`
+whois $var

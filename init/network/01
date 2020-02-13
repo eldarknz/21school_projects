@@ -1,1 +1,2 @@
-ifconfig -l
+var=`ifconfig -l | tr " " "\n"`
+echo "List of the network interfaces:\n$var"

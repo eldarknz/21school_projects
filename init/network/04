@@ -1,1 +1,2 @@
-netstat -nr | grep en0 | grep default | awk '{print $2}'
+var=`netstat -nr | grep default | head -1 | awk '{print $2}'`
+echo "Default gateway in the routing table: $var"

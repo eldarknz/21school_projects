@@ -1,1 +1,2 @@
-nslookup slash16.org | grep Server: | awk '{print $2}'
+var=`nslookup slash16.org | grep Server | awk '{print $2}'`
+echo "IP address of the DNS: $var"

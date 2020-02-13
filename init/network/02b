@@ -1,1 +1,2 @@
-arp -a
+var=`arp -a | awk '{print $2}' | tr -d "(" | tr -d ")"`
+echo "IP address list which are part of the same subnet:\n$var"

@@ -1,1 +1,2 @@
-ifconfig en1 | grep ether | awk '{print $2}'
+var=`networksetup -getmacaddress 'Wi-Fi' | awk '{print $3}'`
+echo "MAC address of the Wi-Fi card: $var"
