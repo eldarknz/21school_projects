@@ -1,0 +1,7 @@
+myip=`ifconfig en0 | grep 'inet ' | awk '{print $2}'`
+echo "Hostname: "
+nslookup $myip | grep name | awk '{print $4}'
+
+#or 
+
+hostname
