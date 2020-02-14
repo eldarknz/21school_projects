@@ -1,0 +1,9 @@
+echo "Who is connected to the system: 
+
+# who
+
+other variants:
+
+# w
+# w -h
+# users"

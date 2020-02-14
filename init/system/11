@@ -1,0 +1,3 @@
+echo "Command that displays the available space left and used on the system:
+
+# df -h --total"

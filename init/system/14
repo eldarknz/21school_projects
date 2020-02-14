@@ -1,0 +1,3 @@
+echo "To run a command in the background:
+
+# tail -f /var/log/syslog &"

@@ -1,0 +1,7 @@
+echo "Command that lists the partition tables of drives:
+
+# lsblk
+
+other variants
+
+# sudo fdisk -l"

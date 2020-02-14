@@ -1,0 +1,7 @@
+echo "Command that determines the state of the SSH service:
+
+# sudo service ssh status
+
+other variants:
+
+# sudo /etc/init.d/ssh status"

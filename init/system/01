@@ -1,0 +1,1 @@
+echo "Debian version are in: /etc/debian_version"

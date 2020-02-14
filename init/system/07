@@ -1,0 +1,7 @@
+echo "PID of the SSHD service:
+
+# pidof sshd
+
+other variants:
+
+# cat /var/run/sshd.pid"

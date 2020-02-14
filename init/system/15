@@ -1,0 +1,3 @@
+echo "Command that kills the background command’s process:
+
+# sudo pkill tail"

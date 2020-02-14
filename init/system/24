@@ -1,0 +1,7 @@
+echo "Command that list all packages:
+
+# sudo apt list --installed
+
+other variants:
+
+# dpkg --list"

@@ -1,0 +1,3 @@
+echo "Exact size of each folder of /var:
+
+# sudo du -sh /var/*"

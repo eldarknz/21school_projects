@@ -1,0 +1,5 @@
+echo "Connect as new user:
+
+# su -l [username]
+
+# by ssh: ssh [-flags] username@localhost"

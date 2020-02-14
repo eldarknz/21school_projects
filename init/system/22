@@ -1,0 +1,3 @@
+echo "Command that add a new local user:
+
+# sudo adduser [username]"

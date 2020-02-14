@@ -1,0 +1,7 @@
+echo "Command for reboot ssh service:
+
+# sudo service ssh restart
+
+other variants:
+
+# sudo /etc/init.d/ssh restart"

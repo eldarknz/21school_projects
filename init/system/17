@@ -1,0 +1,7 @@
+echo "Command that allows to connect via ssh on the VM:
+
+# ssh [-flags] user@host
+
+example:
+
+# ssh -2222 hkayla@localhost"

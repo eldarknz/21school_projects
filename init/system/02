@@ -1,0 +1,3 @@
+echo "Command for rename system:
+
+# sudo hostname name"
