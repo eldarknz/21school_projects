@@ -1,0 +1,39 @@
+#!/bin/sh
+
+number=0
+
+if [ $# -ne 1 ]
+then
+	echo "usage: ./03 path_to_folder"
+	exit 0
+fi
+
+[ -d "$1" ]
+if [ $? -ne 0 ]
+then
+	echo "Error: Directory $1 does not exists."
+	exit 0
+fi
+
+for filename in $1*
+do
+    if [[ -f $filename ]]
+    then
+		echo "$filename" | grep -q " "         
+		if [ $? -eq 0 ]
+		then
+			fname=$filename                      
+			n=`echo $fname | sed -e "s/ /_/g"`   
+			mv "$fname" "$n"                     
+			let "number += 1"
+		fi
+	fi	
+done
+
+if [ "$number" -eq 1 ]
+then
+	echo "$number file renamed."
+else
+	echo "Renamed files: $number"
+fi  
+exit 0
