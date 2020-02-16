@@ -4,4 +4,4 @@ echo "Command that allows to connect via ssh on the VM:
 
 example:
 
-# ssh -2222 hkayla@localhost"
+# ssh -p 2222 hkayla@localhost"

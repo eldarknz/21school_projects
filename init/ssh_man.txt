@@ -1,0 +1,27 @@
+--------------------------Setting SSH connection-----------------------------
+# remote host
+sudo apt-get update
+sudo apt-get install openssh-server
+
+-stop your virtualmachine.
+-Set the net of your virtualmachine
+-click on settings & network
+-select NAT as connection and click on advanced, and set as in the picture below.
+Click on port forwarding and set the SSH parameter:
+---Name: SSH
+---Protocol: TCP
+---Host IP: 127.0.0.1
+---Host Port: 2222
+---IP Guest: Empty
+---Port Guest: 22
+-start your Virtual Machine:
+
+----------------------------Set authorized keys------------------------------
+# client system
+ssh-keygen -b 4096
+cat ~/.ssh/id_rsa.pub
+# remote host
+mkdir -p ~/.ssh
+echo public_key_string >> ~/.ssh/authorized_keys
+or
+cat ~/.ssh/authorized_keys and past key and save file
