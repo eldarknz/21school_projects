@@ -1,0 +1,27 @@
+#!/bin/sh
+
+if [ $# -eq 1 ]
+then
+	read -p "Are you sure to delete? (Y/n)?" CONT
+	if [ "$CONT" = "Y" ]; 
+	then
+		if [ "$(cat /etc/passwd | grep $1)" != "" ]
+		then
+			if [ "$(pgrep -u $1)" != "" ]
+			then
+				sudo pkill -u $1
+				sudo deluser --remove-all-files $1
+				echo "user $1 deleted"
+				echo "return code: $?"
+			else
+				echo "user $1 exist, no active"
+			fi
+		else
+			echo "user $1 not exist"
+		fi
+	else
+		echo "user has not been deleted"
+	fi
+else
+	echo "usage: ./02 username"
+fi
