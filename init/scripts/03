@@ -25,7 +25,8 @@ do
 			fname=$filename                      
 			n=`echo $fname | sed -e "s/ /_/g"`   
 			mv "$fname" "$n"                     
-			let "number += 1"
+			#let "number += 1"
+			((number++))
 		fi
 	fi	
 done

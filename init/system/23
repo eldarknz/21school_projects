@@ -1,5 +1,7 @@
 echo "Connect as new user:
 
-# su -l [username]
+# by graphical: Put your login and password when asked
+
+# from the user to go to another: su -l [username]
 
 # by ssh: ssh [-flags] username@localhost"

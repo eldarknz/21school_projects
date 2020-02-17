@@ -1,2 +1,7 @@
+# External IP adresses of 42.fr:
+# 163.172.250.12
+# 163.172.250.13
+
+# Command
 var=`nslookup 42.fr | grep Address | awk '{if(NR>1)print $2}'`
 echo "External IP adresses of 42.fr:\n$var"
