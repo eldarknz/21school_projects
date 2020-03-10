@@ -1,0 +1,9 @@
+echo "#First, run the container:
+
+docker run -it debian bash
+
+#then
+
+apt-get update -y && apt-get upgrade -y
+apt-get install build-essential -y
+apt-get install git vim -y"
