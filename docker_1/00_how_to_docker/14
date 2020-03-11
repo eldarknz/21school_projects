@@ -1,0 +1,10 @@
+# docker --link deprecated
+docker network create appnet
+if [ $? -eq 0 ]
+then
+	docker run -d --name lair --network appnet -p 8080:80 wordpress
+	if [ $? -eq 0 ]
+	then
+		docker network connect appnet spawning-pool
+	fi
+fi

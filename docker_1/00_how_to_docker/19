@@ -1,0 +1,18 @@
+docker run -d --name Abathur -v ~/:/root -p 3000:3000 -it python:2-slim
+if [ $? -eq 0 ]
+then
+	docker exec Abathur pip install flask
+	if [ $? -eq 0 ]
+	then
+		echo 'from flask import Flask\n\napp = Flask(__name__)\n\n@app.route("/")\n@app.route("/index")\ndef index():\n    return "<h1 style=\"color: red\">Hello World!</h1>"\n\nif __name__ == "__main__":\n    app.run(host="0.0.0.0", port=3000)' > ~/app.py
+		if [ $? -eq 0 ]
+		then
+			docker exec Abathur python /root/app.py
+			if [ $? -eq ]
+			then
+				echo "Congratulations!"
+			fi
+		fi
+	fi
+fi
+exit 0
